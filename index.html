@@ -80,7 +80,6 @@
   </div>
 
   <div id="mainText">Hola Mami, tengo algo que decirte...</div>
-  <div id="subText"></div>
   <button onclick="nextStep()">Pica aquí para saber qué quiero decirte</button>
 
   <audio id="surpriseMusic" src="limon.mp3"></audio>
@@ -88,7 +87,6 @@
   <script>
     const gifImg = document.getElementById('gifImg');
     const mainText = document.getElementById('mainText');
-    const subText = document.getElementById('subText');
     const audio = document.getElementById('surpriseMusic');
     let step = 1;
 
@@ -100,19 +98,19 @@
       if (step === 2) {
         mainText.textContent = "Quiero decirte que eres la mejor...";
         gifImg.src = "pooh.gif";
-        subText.textContent = "Pica aquí para saber en qué eres la mejor";
+        button.textContent = "Pica aquí para saber en qué eres la mejor";
       }
 
       else if (step === 3) {
         mainText.textContent = "¡Eres la mejor en hacerme enojar!";
         gifImg.src = "huyendo.gif";
-        subText.textContent = "No es cierto jaja, pica aquí una vez más porfi!";
+        button.textContent = "No es cierto jaja, pica aquí una vez más porfi!";
       }
 
       else if (step === 4) {
         mainText.textContent = "Eres la mejor mamá del mundo, te amo mucho!";
         gifImg.style.display = "none";
-        subText.textContent = "";
+        button.textContent = "";
         audio.play();
 
         setInterval(() => {
