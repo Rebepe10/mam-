@@ -71,13 +71,13 @@
 <body>
 
   <div id="gifArea">
-    <img id="gifImg" src="pooh-pensando.gif" alt="gif inicial">
+    <img id="gifImg" src="saludando.gif" alt="gif inicial">
   </div>
 
   <div id="mainText">Hola Mami, tengo algo que decirte...</div>
   <button id="nextButton" onclick="nextStep()">Pica aquí para saber qué quiero decirte</button>
 
-  <audio id="surpriseMusic" src="floresamarillas.mp3"></audio>
+  <audio id="surpriseMusic" src="limon.mp3"></audio>
 
   <script>
     const gifImg = document.getElementById('gifImg');
@@ -93,13 +93,13 @@
 
       if (step === 2) {
         mainText.textContent = "Quiero decirte que eres la mejor...";
-        gifImg.src = "gatito-sorprendido.gif";
+        gifImg.src = "pooh.gif";
         button.textContent = "Pica aquí para saber en qué eres la mejor";
       }
 
       else if (step === 3) {
         mainText.textContent = "¡Eres la mejor en hacerme enojar!";
-        gifImg.src = "monito-riéndose.gif";
+        gifImg.src = "huyendo.gif";
         button.textContent = "No es cierto jaja, pica aquí una vez más porfi!";
       }
 
