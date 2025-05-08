@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Mamá</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEFA;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    #gifArea {
+      height: 300px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    #gifArea img {
+      height: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    #mainText {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: black;
+    }
+
+    #subText {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: #191970;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .falling {
+      position: absolute;
+      width: 150px;
+      animation: fall linear infinite;
+      z-index: 1000;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -100px;
+        opacity: 1;
+      }
+      100% {
+        top: 100vh;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="gifArea">
+    <img id="gifImg" src="pooh-pensando.gif" alt="gif inicial">
+  </div>
+
+  <div id="mainText">Hola Mami, tengo algo que decirte...</div>
+  <div id="subText"></div>
+  <button onclick="nextStep()">Pica aquí para saber qué quiero decirte</button>
+
+  <audio id="surpriseMusic" src="floresamarillas.mp3"></audio>
+
+  <script>
+    const gifImg = document.getElementById('gifImg');
+    const mainText = document.getElementById('mainText');
+    const subText = document.getElementById('subText');
+    const audio = document.getElementById('surpriseMusic');
+    let step = 1;
+
+    const fallingGifs = ['yo.gif', 'corazones.gif'];
+
+    function nextStep() {
+      step++;
+
+      if (step === 2) {
+        mainText.textContent = "Quiero decirte que eres la mejor...";
+        gifImg.src = "gatito-sorprendido.gif";
+        subText.textContent = "Pica aquí para saber en qué eres la mejor";
+      }
+
+      else if (step === 3) {
+        mainText.textContent = "¡Eres la mejor en hacerme enojar!";
+        gifImg.src = "monito-riéndose.gif";
+        subText.textContent = "No es cierto jaja, pica aquí una vez más porfi!";
+      }
+
+      else if (step === 4) {
+        mainText.textContent = "Eres la mejor mamá del mundo, te amo mucho!";
+        gifImg.style.display = "none";
+        subText.textContent = "";
+        audio.play();
+
+        setInterval(() => {
+          const img = document.createElement('img');
+          img.src = fallingGifs[Math.floor(Math.random() * fallingGifs.length)];
+          img.className = 'falling';
+          img.style.left = Math.random() * window.innerWidth + 'px';
+          img.style.animationDuration = (3 + Math.random() * 2) + 's';
+          document.body.appendChild(img);
+          setTimeout(() => img.remove(), 6000);
+        }, 300);
+      }
+    }
+  </script>
+
+</body>
+</html>
